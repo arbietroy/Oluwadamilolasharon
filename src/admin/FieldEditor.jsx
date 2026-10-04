@@ -4,7 +4,7 @@ const LONG = new Set(['body', 'text', 'intro', 'summary', 'problem', 'solution',
 const SKIP = new Set(['id', 'type', 'hidden']);
 
 export const humanize = (k) =>
-  ({ q: 'Question', a: 'Answer', cta: 'Button', url: 'Link', path: 'Links to', formEndpoint: 'Form webhook URL (n8n, Formspree…)', slugs: 'Projects to show', photoUrl: 'Photo URL', liveUrl: 'Live site link (leave empty to hide)' }[k] ||
+  ({ q: 'Question', a: 'Answer', cta: 'Button', url: 'Link', path: 'Links to', formEndpoint: 'Form webhook URL (n8n, Formspree…)', slugs: 'Projects to show', photoUrl: 'Photo URL', liveUrl: 'Live site link (leave empty to hide)', handle: 'Name shown (e.g. @username)' }[k] ||
   k.replace(/([A-Z])/g, ' $1').replace(/^./, (c) => c.toUpperCase()).replace(/ (.)/g, (m) => m.toLowerCase()));
 
 function blank(v) {
