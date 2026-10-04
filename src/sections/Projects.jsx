@@ -17,15 +17,19 @@ export function ProjectCard({ p, big }) {
   const cover = resolveColor(p.coverColor, content.theme);
   const dark = isDark(cover.hex);
   return (
-    <SmartLink to={`/projects/${p.slug}`} className={`proj-card ${big ? 'proj-big' : ''} ${dark ? 'on-dark' : ''}`} style={{ '--cover': cover.css }}>
+    <article className={`proj-card ${big ? 'proj-big' : ''} ${dark ? 'on-dark' : ''}`} style={{ '--cover': cover.css }}>
       <div className="proj-art" data-fx="draw"><WorkflowArt steps={p.steps} color={dark ? 'var(--primary)' : 'var(--ink)'} /></div>
       <div className="proj-text">
         <ul className="proj-tags">{p.tags?.map((t) => <li key={t}>{t}</li>)}</ul>
         <h3>{p.title}</h3>
         <p>{p.summary}</p>
-        <span className="proj-open">Read the case study</span>
+        <div className="proj-links">
+          {/* this link stretches over the whole card; the live link sits above it */}
+          <SmartLink to={`/projects/${p.slug}`} className="proj-open">Read the case study</SmartLink>
+          {p.liveUrl && <SmartLink to={p.liveUrl} className="proj-live">Visit live site ↗</SmartLink>}
+        </div>
       </div>
-    </SmartLink>
+    </article>
   );
 }
 

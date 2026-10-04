@@ -41,6 +41,7 @@ export default function ProjectPage() {
         <dl className="case-meta">
           <div><dt>Built with</dt><dd>{p.tools?.join(', ')}</dd></div>
           <div><dt>Area</dt><dd>{p.tags?.join(', ')}</dd></div>
+          {p.liveUrl && <div><dt>Live site</dt><dd><SmartLink to={p.liveUrl} className="text-link">Visit it ↗</SmartLink></dd></div>}
         </dl>
       </header>
 
