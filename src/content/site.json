@@ -1,0 +1,659 @@
+{
+  "site": {
+    "name": "Sharon",
+    "role": "AI automation engineer",
+    "email": "hello@yourdomain.com",
+    "whatsapp": "",
+    "bookingUrl": "",
+    "socials": [
+      {
+        "label": "LinkedIn",
+        "url": "https://linkedin.com"
+      },
+      {
+        "label": "Instagram",
+        "url": "https://instagram.com"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com"
+      }
+    ],
+    "nav": [
+      {
+        "label": "Home",
+        "path": "/"
+      },
+      {
+        "label": "About",
+        "path": "/about"
+      },
+      {
+        "label": "Services",
+        "path": "/services"
+      },
+      {
+        "label": "Projects",
+        "path": "/projects"
+      },
+      {
+        "label": "Contact",
+        "path": "/contact"
+      }
+    ],
+    "footerNote": "Built by Sharon. The contact form on this site is an automation too."
+  },
+  "theme": {
+    "fonts": {
+      "display": "Schibsted Grotesk",
+      "body": "Figtree"
+    },
+    "colors": {
+      "primary": "#A9D6F5",
+      "background": "#EEF6FC",
+      "ink": "#0B1F3A",
+      "accent": "#C6F432",
+      "surface": "#FFFFFF"
+    },
+    "radius": 22,
+    "animations": true
+  },
+  "pages": {
+    "home": {
+      "title": "Home",
+      "sections": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "hidden": false,
+          "messyHeadline": "Your business runs on tasks nobody should be doing by hand.",
+          "flowHeadline": "I turn them into systems that run themselves.",
+          "name": "Sharon",
+          "intro": "AI automation engineer based in Nigeria. I build workflows, AI agents and dashboards for teams who are tired of copy-paste.",
+          "primaryCta": {
+            "label": "See my work",
+            "path": "/projects"
+          },
+          "secondaryCta": {
+            "label": "Let's talk",
+            "path": "/contact"
+          },
+          "tasks": [
+            {
+              "messy": "247 unread emails",
+              "node": "Gmail trigger"
+            },
+            {
+              "messy": "\"Is this still available?\"",
+              "node": "AI auto-reply"
+            },
+            {
+              "messy": "Copy the invoice into the sheet",
+              "node": "Sheets: add row"
+            },
+            {
+              "messy": "Draft the contract. Again.",
+              "node": "Document generator"
+            },
+            {
+              "messy": "Post at 9am sharp",
+              "node": "Scheduler"
+            },
+            {
+              "messy": "Who paid yesterday?",
+              "node": "Payment alert"
+            }
+          ]
+        },
+        {
+          "id": "tools",
+          "type": "marquee",
+          "hidden": false,
+          "label": "What I build with",
+          "items": [
+            "n8n",
+            "Make",
+            "Zapier",
+            "OpenAI",
+            "Claude",
+            "Google Sheets",
+            "Gmail",
+            "Meta Graph API",
+            "Airtable",
+            "WhatsApp",
+            "Python",
+            "Google Docs"
+          ]
+        },
+        {
+          "id": "edge",
+          "type": "hats",
+          "hidden": false,
+          "heading": "I've done the manual work. That's why my automations fit.",
+          "body": "Before I automated anything, I was the person doing it by hand. Every role taught me where time quietly disappears.",
+          "items": [
+            {
+              "title": "Social media manager",
+              "text": "Scheduling posts, pulling reports, answering the same DM fifty times a day."
+            },
+            {
+              "title": "Content creator",
+              "text": "Briefs, scripts, captions and deadlines that never stop coming."
+            },
+            {
+              "title": "Video editor",
+              "text": "Cutting filler words and syncing captions, frame by frame."
+            },
+            {
+              "title": "AI automation engineer",
+              "text": "Now I build the systems that handle the repetitive parts, so people can do the work only people can do."
+            }
+          ]
+        },
+        {
+          "id": "services-snapshot",
+          "type": "servicesSnapshot",
+          "hidden": false,
+          "heading": "What I can take off your plate",
+          "linkLabel": "All services",
+          "limit": 4
+        },
+        {
+          "id": "featured",
+          "type": "featuredProjects",
+          "hidden": false,
+          "heading": "Recent builds",
+          "body": "Real systems running for real businesses.",
+          "slugs": [
+            "instagram-analytics-dashboard",
+            "bank-transaction-tracker",
+            "docusend",
+            "landnest-rentals"
+          ]
+        },
+        {
+          "id": "process",
+          "type": "process",
+          "hidden": false,
+          "heading": "How a project runs",
+          "steps": [
+            {
+              "title": "Discover",
+              "text": "We talk through your week and find the tasks that eat the most time."
+            },
+            {
+              "title": "Map",
+              "text": "I sketch the workflow so you can see exactly what will happen, step by step."
+            },
+            {
+              "title": "Build",
+              "text": "I build, test with your real data, and fix the edge cases before you rely on it."
+            },
+            {
+              "title": "Hand over",
+              "text": "You get the system, a short walkthrough video, and support while it settles in."
+            }
+          ]
+        },
+        {
+          "id": "cta",
+          "type": "cta",
+          "hidden": false,
+          "heading": "What would you automate first?",
+          "body": "Tell me the task you're most tired of. I'll tell you if it can run on its own.",
+          "button": {
+            "label": "Start a conversation",
+            "path": "/contact"
+          }
+        }
+      ]
+    },
+    "about": {
+      "title": "About",
+      "sections": [
+        {
+          "id": "about-intro",
+          "type": "aboutIntro",
+          "hidden": false,
+          "heading": "Hi, I'm Sharon.",
+          "body": "I'm an AI automation engineer with a background in social media management, content creation and video editing. I've led content and digital systems for real estate companies, creative studios, NGOs and personal brands across Nigeria. Now I build the automations I always wished I had.",
+          "photoUrl": "",
+          "photoAlt": "Portrait of Sharon"
+        },
+        {
+          "id": "story",
+          "type": "timeline",
+          "hidden": false,
+          "heading": "How I got here",
+          "items": [
+            {
+              "title": "Social media",
+              "text": "Managing brand pages and learning how much of the job is repetition."
+            },
+            {
+              "title": "Content creation",
+              "text": "Writing scripts, captions and campaigns for real estate, creative and personal brands."
+            },
+            {
+              "title": "Video editing",
+              "text": "Turning raw footage into finished content, and noticing which steps a machine could do."
+            },
+            {
+              "title": "First automations",
+              "text": "Built a birthday email system for a 1,100-person sales network, then kept going."
+            },
+            {
+              "title": "AI automation engineer",
+              "text": "Now building workflows, dashboards and platforms that run without me watching them."
+            }
+          ]
+        },
+        {
+          "id": "different",
+          "type": "text",
+          "hidden": false,
+          "heading": "Why work with a marketer who builds?",
+          "body": "Most automation is built by people who have never answered a customer DM or chased a report deadline. I have. I know which tasks matter, what your team will actually use, and how the output needs to look when it lands in front of a client."
+        },
+        {
+          "id": "skills",
+          "type": "skills",
+          "hidden": false,
+          "heading": "Skills and tools",
+          "groups": [
+            {
+              "title": "Automation",
+              "items": [
+                "n8n (cloud and self-hosted)",
+                "Make",
+                "Zapier",
+                "Webhooks"
+              ]
+            },
+            {
+              "title": "AI",
+              "items": [
+                "OpenAI",
+                "Claude",
+                "AI agents",
+                "Prompt design"
+              ]
+            },
+            {
+              "title": "Data and APIs",
+              "items": [
+                "Google Sheets",
+                "Excel",
+                "Meta Graph API",
+                "Gmail API",
+                "Python"
+              ]
+            },
+            {
+              "title": "Content and creative",
+              "items": [
+                "Social media strategy",
+                "Copywriting",
+                "Video editing",
+                "Brand strategy"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "about-cta",
+          "type": "cta",
+          "hidden": false,
+          "heading": "Let's build something that saves you time.",
+          "body": "",
+          "button": {
+            "label": "Work with me",
+            "path": "/contact"
+          }
+        }
+      ]
+    },
+    "services": {
+      "title": "Services",
+      "sections": [
+        {
+          "id": "services-head",
+          "type": "pageHeader",
+          "hidden": false,
+          "heading": "Services",
+          "body": "Pick one, or tell me the problem and I'll suggest the right mix."
+        },
+        {
+          "id": "services-list",
+          "type": "serviceList",
+          "hidden": false
+        },
+        {
+          "id": "services-process",
+          "type": "process",
+          "hidden": false,
+          "heading": "How we'll work together",
+          "steps": [
+            {
+              "title": "Discovery call",
+              "text": "30 minutes to understand your tools, your team and the task you want gone."
+            },
+            {
+              "title": "Workflow map",
+              "text": "A clear diagram and a fixed quote. No surprises."
+            },
+            {
+              "title": "Build and test",
+              "text": "I build on your accounts, so you own everything I make."
+            },
+            {
+              "title": "Launch and support",
+              "text": "A walkthrough video, written notes, and two weeks of fixes included."
+            }
+          ]
+        },
+        {
+          "id": "faq",
+          "type": "faq",
+          "hidden": false,
+          "heading": "Questions people ask",
+          "items": [
+            {
+              "q": "How long does a project take?",
+              "a": "Simple workflows take a few days. Larger systems, like dashboards or platforms, take two to six weeks."
+            },
+            {
+              "q": "Do I need to know how to code?",
+              "a": "No. I build it, explain it in plain English, and leave you with notes you can follow."
+            },
+            {
+              "q": "Which tools do you use?",
+              "a": "Mostly n8n, Make, Google Workspace and AI models like OpenAI and Claude. I'll use what you already pay for where I can."
+            },
+            {
+              "q": "Who owns the automation?",
+              "a": "You do. Everything is built on your accounts."
+            },
+            {
+              "q": "What does it cost?",
+              "a": "It depends on the size of the job. After a short call you get a fixed quote."
+            }
+          ]
+        },
+        {
+          "id": "services-cta",
+          "type": "cta",
+          "hidden": false,
+          "heading": "Not sure which one you need?",
+          "body": "Describe the task. I'll point you to the right fix.",
+          "button": {
+            "label": "Book a call",
+            "path": "/contact"
+          }
+        }
+      ]
+    },
+    "projects": {
+      "title": "Projects",
+      "sections": [
+        {
+          "id": "projects-head",
+          "type": "pageHeader",
+          "hidden": false,
+          "heading": "Projects",
+          "body": "Each one started as a task someone was doing by hand."
+        },
+        {
+          "id": "projects-grid",
+          "type": "projectGrid",
+          "hidden": false
+        }
+      ]
+    },
+    "contact": {
+      "title": "Contact",
+      "sections": [
+        {
+          "id": "contact-form",
+          "type": "contactForm",
+          "hidden": false,
+          "heading": "Let's build something that saves you time.",
+          "body": "Tell me what's slowing you down. I reply within two working days.",
+          "formEndpoint": "",
+          "successMessage": "Message sent. It just went through a workflow on its way to my inbox.",
+          "budgetOptions": [
+            "Not sure yet",
+            "Under ₦300k",
+            "₦300k – ₦1m",
+            "Above ₦1m"
+          ]
+        }
+      ]
+    }
+  },
+  "services": [
+    {
+      "title": "Workflow automation",
+      "text": "Connect the apps you already use so data moves on its own. Forms to sheets, sheets to email, email to your CRM.",
+      "examples": [
+        "Lead capture to CRM",
+        "Auto-filed invoices",
+        "Team notifications"
+      ]
+    },
+    {
+      "title": "AI agents and chatbots",
+      "text": "Assistants that answer customer questions, qualify leads and reply to DMs on WhatsApp and Instagram.",
+      "examples": [
+        "DM auto-replies",
+        "Lead qualification",
+        "FAQ assistant"
+      ]
+    },
+    {
+      "title": "Marketing automation",
+      "text": "Content scheduling, campaign reporting and audience follow-ups, built by someone who has run the campaigns.",
+      "examples": [
+        "Post scheduling",
+        "Birthday and nurture emails",
+        "Campaign reports"
+      ]
+    },
+    {
+      "title": "Dashboards and reporting",
+      "text": "Reports that build themselves, with charts, month-over-month changes and AI-written takeaways.",
+      "examples": [
+        "Social analytics",
+        "Sales dashboards",
+        "Weekly summaries"
+      ]
+    },
+    {
+      "title": "Documents and admin",
+      "text": "Contracts, receipts and letters generated from a form and sent the moment they're needed.",
+      "examples": [
+        "Contract generation",
+        "Payment logging",
+        "Auto-sent receipts"
+      ]
+    },
+    {
+      "title": "Automation audit",
+      "text": "A session where we go through your operations and rank what to automate first, by time saved.",
+      "examples": [
+        "Process review",
+        "Priority roadmap",
+        "Tool recommendations"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "slug": "instagram-analytics-dashboard",
+      "title": "Instagram analytics dashboard",
+      "summary": "Instagram numbers pulled automatically into a dashboard with charts, month-over-month changes and AI-written recommendations.",
+      "tags": [
+        "Analytics",
+        "Social media",
+        "AI"
+      ],
+      "tools": [
+        "Meta Graph API",
+        "Google Sheets",
+        "Excel",
+        "AI"
+      ],
+      "coverColor": "primary",
+      "problem": "Monthly social reports meant exporting numbers by hand, rebuilding the same charts, and guessing what to post next.",
+      "solution": "A connection to the Meta Graph API that pulls account and post data straight into a Google Sheets and Excel dashboard, compares each month to the last, and adds AI-generated recommendations.",
+      "steps": [
+        {
+          "label": "Meta Graph API",
+          "detail": "Pulls account and post insights from a creator account linked to a Facebook Page."
+        },
+        {
+          "label": "Clean and organise",
+          "detail": "Formats the raw numbers into tidy monthly tables."
+        },
+        {
+          "label": "Charts",
+          "detail": "Builds reach, engagement and growth charts automatically."
+        },
+        {
+          "label": "Month over month",
+          "detail": "Highlights what went up, what dropped and by how much."
+        },
+        {
+          "label": "AI recommendations",
+          "detail": "Writes plain-English suggestions for next month's content."
+        }
+      ],
+      "results": [
+        "No more manual exports",
+        "Reports ready the moment the month ends",
+        "Content decisions backed by data"
+      ]
+    },
+    {
+      "slug": "bank-transaction-tracker",
+      "title": "Bank transaction tracker",
+      "summary": "Every bank credit alert is read, logged into a Google Sheet and announced, without anyone opening their inbox.",
+      "tags": [
+        "Finance",
+        "Workflow"
+      ],
+      "tools": [
+        "n8n",
+        "Gmail",
+        "Google Sheets"
+      ],
+      "coverColor": "accent",
+      "problem": "Confirming payments meant scrolling through bank alert emails and typing sender names and amounts into a sheet.",
+      "solution": "An n8n workflow that watches for bank credit-alert emails, extracts the sender, amount and description, logs each payment as a new row, and sends a notification.",
+      "steps": [
+        {
+          "label": "Gmail trigger",
+          "detail": "Fires the moment a bank credit alert lands."
+        },
+        {
+          "label": "Read the alert",
+          "detail": "Extracts sender name, amount and description from the email."
+        },
+        {
+          "label": "Sheets: add row",
+          "detail": "Logs the payment with date and details."
+        },
+        {
+          "label": "Notify",
+          "detail": "Sends an alert so the team knows money came in."
+        }
+      ],
+      "results": [
+        "Every payment logged automatically",
+        "A running record that's always up to date",
+        "No missed credits"
+      ]
+    },
+    {
+      "slug": "docusend",
+      "title": "DocuSend",
+      "summary": "Contract-of-sale documents for a real estate company, filled from a form and emailed to the client once payment is confirmed.",
+      "tags": [
+        "Documents",
+        "Real estate",
+        "Workflow"
+      ],
+      "tools": [
+        "n8n",
+        "Google Docs",
+        "Gmail"
+      ],
+      "coverColor": "ink",
+      "problem": "Each contract of sale was typed up by hand: client name, date, amount paid and property, with room for costly mistakes.",
+      "solution": "A form feeds the client details into a contract template, generates the finished document and emails it to the client as soon as payment is complete.",
+      "steps": [
+        {
+          "label": "Form submitted",
+          "detail": "Client name, property, date and amount paid are captured once."
+        },
+        {
+          "label": "Fill the template",
+          "detail": "Details are placed into the contract of sale automatically."
+        },
+        {
+          "label": "Payment check",
+          "detail": "The document waits until payment is confirmed."
+        },
+        {
+          "label": "Email the client",
+          "detail": "The finished contract is sent straight to the client."
+        }
+      ],
+      "results": [
+        "No retyping contracts",
+        "Fewer errors in names and amounts",
+        "Clients get documents faster"
+      ]
+    },
+    {
+      "slug": "landnest-rentals",
+      "title": "Landnest rentals platform",
+      "summary": "An estate management platform where property owners list rentals and people apply to become tenants.",
+      "tags": [
+        "Real estate",
+        "Platform"
+      ],
+      "tools": [
+        "Web app",
+        "Database",
+        "Email notifications"
+      ],
+      "coverColor": "surface",
+      "problem": "Rental listings and tenant applications were scattered across calls, chats and paper forms.",
+      "solution": "One platform where owners post rental listings, people browse and apply to become tenants, and the team reviews every application in one place.",
+      "steps": [
+        {
+          "label": "List a property",
+          "detail": "Owners post rentals with photos, price and details."
+        },
+        {
+          "label": "Browse",
+          "detail": "Prospective tenants search and compare listings."
+        },
+        {
+          "label": "Apply",
+          "detail": "Applicants submit their details through one simple form."
+        },
+        {
+          "label": "Review",
+          "detail": "The team reviews applications and updates their status."
+        }
+      ],
+      "results": [
+        "Listings and applications in one place",
+        "Faster tenant screening",
+        "A clear record for every property"
+      ]
+    }
+  ]
+}
