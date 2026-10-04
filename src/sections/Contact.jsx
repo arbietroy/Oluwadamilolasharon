@@ -18,13 +18,20 @@ export default function ContactForm({ data }) {
       return;
     }
     setStatus('sending');
+    // FormSubmit reads these extra fields to set the email subject and layout
+    const extras = data.formEndpoint.includes('formsubmit.co')
+      ? { _subject: `Automation enquiry from ${form.name}`, _template: 'table' }
+      : {};
     try {
       const res = await fetch(data.formEndpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, sentAt: new Date().toISOString(), source: 'website' }),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ ...form, ...extras, sentAt: new Date().toISOString(), source: 'website' }),
       });
       if (!res.ok) throw new Error(`The form service replied with status ${res.status}.`);
+      // some services answer 200 but report failure in the body (e.g. FormSubmit before activation)
+      const reply = await res.json().catch(() => ({}));
+      if (reply.success === false || reply.success === 'false') throw new Error(reply.message || 'The form service did not accept the message.');
       setStatus('sent');
     } catch (err) {
       setError(`${err.message || 'The message could not be sent.'} Email ${site.email} instead.`);

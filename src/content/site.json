@@ -410,7 +410,7 @@
           "hidden": false,
           "heading": "Let's build something that saves you time.",
           "body": "Tell me what's slowing you down. I reply within two working days.",
-          "formEndpoint": "",
+          "formEndpoint": "https://formsubmit.co/ajax/ogunbanjooluwadamilola@gmail.com",
           "successMessage": "Message sent. It just went through a workflow on its way to my inbox.",
           "budgetOptions": [
             "Not sure yet",
