@@ -524,7 +524,7 @@
       "slug": "docusend",
       "title": "DocuSend",
       "summary": "Contract-of-sale documents for a real estate company, filled from a form and emailed to the client once payment is confirmed.",
-      "liveUrl": "",
+      "liveUrl": "https://docusend-vert.vercel.app/",
       "tags": [
         "Documents",
         "Real estate",
@@ -566,7 +566,7 @@
       "slug": "landnest-rentals",
       "title": "Landnest rentals platform",
       "summary": "An estate management platform where property owners list rentals and people apply to become tenants.",
-      "liveUrl": "",
+      "liveUrl": "https://rentalshub.netlify.app/",
       "tags": [
         "Real estate",
         "Platform"
