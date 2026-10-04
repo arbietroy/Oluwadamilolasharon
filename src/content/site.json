@@ -564,7 +564,7 @@
     },
     {
       "slug": "landnest-rentals",
-      "title": "Landnest rentals platform",
+      "title": "Rentals Hub",
       "summary": "An estate management platform where property owners list rentals and people apply to become tenants.",
       "liveUrl": "https://rentalshub.netlify.app/",
       "tags": [
