@@ -247,7 +247,7 @@ export default function Admin() {
           {tab.startsWith('page:') && <PageEditor key={tab} pageKey={tab.slice(5)} />}
           {tab === 'projects' && (
             <CollectionEditor field="projects" singular="Project" itemTitle={(p) => p.title || 'Untitled project'}
-              template={() => ({ slug: `project-${Date.now().toString(36)}`, title: 'New project', summary: '', tags: ['Workflow'], tools: ['n8n'], coverColor: 'primary', problem: '', solution: '', steps: [{ label: 'Step', detail: '' }], results: [''] })} />
+              template={() => ({ slug: `project-${Date.now().toString(36)}`, title: 'New project', summary: '', liveUrl: '', tags: ['Workflow'], tools: ['n8n'], coverColor: 'primary', problem: '', solution: '', steps: [{ label: 'Step', detail: '' }], results: [''] })} />
           )}
           {tab === 'services' && (
             <CollectionEditor field="services" singular="Service" itemTitle={(s) => s.title || 'Untitled service'}

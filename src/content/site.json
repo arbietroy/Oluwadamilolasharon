@@ -118,7 +118,6 @@
             "Meta Graph API",
             "Airtable",
             "WhatsApp",
-            "Python",
             "Google Docs"
           ]
         },
@@ -278,8 +277,7 @@
                 "Google Sheets",
                 "Excel",
                 "Meta Graph API",
-                "Gmail API",
-                "Python"
+                "Gmail API"
               ]
             },
             {
@@ -485,6 +483,7 @@
       "slug": "bank-transaction-tracker",
       "title": "Bank transaction tracker",
       "summary": "Every bank credit alert is read, logged into a Google Sheet and announced, without anyone opening their inbox.",
+      "liveUrl": "",
       "tags": [
         "Finance",
         "Workflow"
@@ -525,6 +524,7 @@
       "slug": "docusend",
       "title": "DocuSend",
       "summary": "Contract-of-sale documents for a real estate company, filled from a form and emailed to the client once payment is confirmed.",
+      "liveUrl": "",
       "tags": [
         "Documents",
         "Real estate",
@@ -566,6 +566,7 @@
       "slug": "landnest-rentals",
       "title": "Landnest rentals platform",
       "summary": "An estate management platform where property owners list rentals and people apply to become tenants.",
+      "liveUrl": "",
       "tags": [
         "Real estate",
         "Platform"
