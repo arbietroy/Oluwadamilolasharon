@@ -112,9 +112,6 @@
           "label": "What I build with",
           "items": [
             "n8n",
-            "Make",
-            "Zapier",
-            "OpenAI",
             "Claude",
             "Google Sheets",
             "Gmail",
@@ -165,7 +162,6 @@
           "heading": "Recent builds",
           "body": "Real systems running for real businesses.",
           "slugs": [
-            "instagram-analytics-dashboard",
             "bank-transaction-tracker",
             "docusend",
             "landnest-rentals"
@@ -265,15 +261,12 @@
               "title": "Automation",
               "items": [
                 "n8n (cloud and self-hosted)",
-                "Make",
-                "Zapier",
                 "Webhooks"
               ]
             },
             {
               "title": "AI",
               "items": [
-                "OpenAI",
                 "Claude",
                 "AI agents",
                 "Prompt design"
@@ -368,7 +361,7 @@
             },
             {
               "q": "Which tools do you use?",
-              "a": "Mostly n8n, Make, Google Workspace and AI models like OpenAI and Claude. I'll use what you already pay for where I can."
+              "a": "Mostly n8n, Google Workspace and Claude for the AI parts. I'll use what you already pay for where I can."
             },
             {
               "q": "Who owns the automation?",
@@ -488,52 +481,6 @@
     }
   ],
   "projects": [
-    {
-      "slug": "instagram-analytics-dashboard",
-      "title": "Instagram analytics dashboard",
-      "summary": "Instagram numbers pulled automatically into a dashboard with charts, month-over-month changes and AI-written recommendations.",
-      "tags": [
-        "Analytics",
-        "Social media",
-        "AI"
-      ],
-      "tools": [
-        "Meta Graph API",
-        "Google Sheets",
-        "Excel",
-        "AI"
-      ],
-      "coverColor": "primary",
-      "problem": "Monthly social reports meant exporting numbers by hand, rebuilding the same charts, and guessing what to post next.",
-      "solution": "A connection to the Meta Graph API that pulls account and post data straight into a Google Sheets and Excel dashboard, compares each month to the last, and adds AI-generated recommendations.",
-      "steps": [
-        {
-          "label": "Meta Graph API",
-          "detail": "Pulls account and post insights from a creator account linked to a Facebook Page."
-        },
-        {
-          "label": "Clean and organise",
-          "detail": "Formats the raw numbers into tidy monthly tables."
-        },
-        {
-          "label": "Charts",
-          "detail": "Builds reach, engagement and growth charts automatically."
-        },
-        {
-          "label": "Month over month",
-          "detail": "Highlights what went up, what dropped and by how much."
-        },
-        {
-          "label": "AI recommendations",
-          "detail": "Writes plain-English suggestions for next month's content."
-        }
-      ],
-      "results": [
-        "No more manual exports",
-        "Reports ready the moment the month ends",
-        "Content decisions backed by data"
-      ]
-    },
     {
       "slug": "bank-transaction-tracker",
       "title": "Bank transaction tracker",

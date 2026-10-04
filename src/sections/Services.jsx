@@ -21,7 +21,10 @@ function Row({ s, i, detailed }) {
   return (
     <li className="svc-row">
       <span className="svc-rule" aria-hidden="true" />
-      <div data-fx="drift"><h3 className="svc-anim">{s.title}</h3></div>
+      <div className="svc-head" data-fx="drift">
+        <span className="svc-num svc-anim">{String(i + 1).padStart(2, '0')}</span>
+        <h3 className="svc-anim">{s.title}</h3>
+      </div>
       <div className="svc-body svc-anim">
         <p>{s.text}</p>
         {detailed && s.examples?.length > 0 && (
