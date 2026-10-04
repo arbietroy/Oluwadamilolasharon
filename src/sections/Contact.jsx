@@ -43,7 +43,7 @@ export default function ContactForm({ data }) {
     site.email && { label: 'Email', value: site.email, href: `mailto:${site.email}` },
     site.whatsapp && { label: 'WhatsApp', value: site.whatsapp, href: `https://wa.me/${site.whatsapp.replace(/\D/g, '')}` },
     site.bookingUrl && { label: 'Book a call', value: 'Pick a time', href: site.bookingUrl },
-    ...site.socials.filter((s) => s.url).map((s) => ({ label: s.label, value: s.url.replace(/^https?:\/\/(www\.)?/, ''), href: s.url })),
+    ...site.socials.filter((s) => s.url).map((s) => ({ label: s.label, value: s.handle || 'View profile', href: s.url })),
   ].filter(Boolean);
 
   return (
