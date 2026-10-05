@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClipForge</title>
+<style>
+  :root {
+    --bg: #0e0f13; --panel: #171920; --line: #2a2d38; --text: #eceef4; --muted: #9096a8;
+    --accent: #ffe600; --accent-ink: #141414; --ok: #3ccf8e; --err: #ff6b6b;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.5 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+  main { max-width: 1100px; margin: 0 auto; padding: 32px 16px 80px; }
+  h1 { font-size: 28px; margin: 0 0 4px; letter-spacing: -0.02em; }
+  h1 span { color: var(--accent); }
+  .sub { color: var(--muted); margin: 0 0 28px; }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 20px; margin-bottom: 20px; }
+  .drop { border: 2px dashed var(--line); border-radius: 12px; padding: 34px 16px; text-align: center; cursor: pointer; transition: border-color .15s; }
+  .drop.over, .drop:hover { border-color: var(--accent); }
+  .drop strong { display: block; font-size: 17px; margin-bottom: 4px; }
+  .drop small { color: var(--muted); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px 18px; margin-top: 18px; }
+  label { display: flex; flex-direction: column; gap: 6px; color: var(--muted); font-size: 13px; }
+  select, input[type=number], input[type=color] { background: #0f1116; color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; }
+  input[type=color] { padding: 2px; height: 38px; }
+  .checks { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-top: 18px; }
+  .checks label { flex-direction: row; align-items: center; color: var(--text); font-size: 14px; }
+  button { background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 10px; padding: 12px 22px; font: 600 15px/1 inherit; cursor: pointer; margin-top: 20px; }
+  button:disabled { opacity: .5; cursor: default; }
+  .bar { height: 8px; background: #0f1116; border-radius: 99px; overflow: hidden; margin: 12px 0; }
+  .bar > div { height: 100%; width: 0; background: var(--accent); transition: width .3s; }
+  .status { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .pill { font-size: 12px; padding: 2px 10px; border-radius: 99px; border: 1px solid var(--line); color: var(--muted); }
+  .pill.done { color: var(--ok); border-color: var(--ok); } .pill.error { color: var(--err); border-color: var(--err); }
+  pre { background: #0b0c10; border-radius: 10px; padding: 12px; max-height: 220px; overflow: auto; font-size: 12px; color: var(--muted); white-space: pre-wrap; margin: 0; }
+  .results { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 18px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
+  .card.long { grid-column: 1 / -1; }
+  .card video { width: 100%; background: #000; display: block; aspect-ratio: 9/16; object-fit: contain; }
+  .card.long video { aspect-ratio: 16/9; }
+  .card .body { padding: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .card h3 { margin: 0; font-size: 16px; }
+  .score { font-weight: 700; color: var(--accent); }
+  .meta { color: var(--muted); font-size: 13px; }
+  .links { display: flex; gap: 12px; margin-top: 6px; }
+  .links a { color: var(--accent); font-size: 13px; text-decoration: none; }
+  .err { color: var(--err); }
+  @media (max-width: 520px) { h1 { font-size: 23px; } .panel { padding: 16px; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Clip<span>Forge</span></h1>
+  <p class="sub">Upload a long video. Get viral shorts and a polished full edit: captions, b-roll, music, filler-word removal, transitions and zoom animations.</p>
+
+  <form class="panel" id="form">
+    <div class="drop" id="drop">
+      <strong id="dropText">Drop a video here or click to choose</strong>
+      <small>MP4, MOV, MKV… podcasts, interviews, talking-head videos, lectures</small>
+      <input type="file" id="file" name="video" accept="video/*" hidden>
+    </div>
+    <div class="grid">
+      <label>Create
+        <select name="mode"><option value="both">Shorts + full edit</option><option value="shorts">Shorts only</option><option value="long">Full edit only</option></select>
+      </label>
+      <label>Number of shorts <input type="number" name="clips" value="5" min="1" max="20"></label>
+      <label>Short length (seconds) <input type="number" name="length" value="60" min="15" max="180"></label>
+      <label>Vertical framing
+        <select name="reframe"><option value="face">Follow the speaker</option><option value="blur">Fit with blurred background</option><option value="center">Centre crop</option></select>
+      </label>
+      <label>Transcription accuracy
+        <select name="whisper"><option value="base">Fast</option><option value="small" selected>Balanced</option><option value="medium">Accurate</option><option value="large-v3">Best (slow)</option></select>
+      </label>
+      <label>Caption highlight <input type="color" name="highlight" value="#ffe600"></label>
+    </div>
+    <div class="checks">
+      <label><input type="checkbox" name="captions" checked> Captions</label>
+      <label><input type="checkbox" name="broll" checked> B-roll</label>
+      <label><input type="checkbox" name="music" checked> Background music</label>
+      <label><input type="checkbox" name="transitions" checked> Transitions</label>
+      <label><input type="checkbox" name="zoom" checked> Zoom animations</label>
+      <label><input type="checkbox" name="fillers" checked> Cut ums &amp; repeats</label>
+      <label><input type="checkbox" name="aggressive"> Also cut “you know”, “like,”</label>
+    </div>
+    <button id="go" type="submit" disabled>Edit my video</button>
+  </form>
+
+  <section class="panel" id="job" hidden>
+    <div class="status"><strong id="jobName"></strong><span class="pill" id="jobStatus"></span></div>
+    <div class="bar"><div id="bar"></div></div>
+    <div class="meta" id="step"></div>
+    <details style="margin-top:10px"><summary class="meta">Log</summary><pre id="log"></pre></details>
+    <p class="err" id="error" hidden></p>
+  </section>
+
+  <section class="results" id="results"></section>
+</main>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const fileInput = $("file"), drop = $("drop");
+let pollTimer, shown = -1;
+
+drop.onclick = () => fileInput.click();
+drop.ondragover = (e) => { e.preventDefault(); drop.classList.add("over"); };
+drop.ondragleave = () => drop.classList.remove("over");
+drop.ondrop = (e) => { e.preventDefault(); drop.classList.remove("over"); fileInput.files = e.dataTransfer.files; picked(); };
+fileInput.onchange = picked;
+function picked() {
+  const f = fileInput.files[0];
+  $("dropText").textContent = f ? `${f.name} (${(f.size / 1e6).toFixed(0)} MB)` : "Drop a video here or click to choose";
+  $("go").disabled = !f;
+}
+
+$("form").onsubmit = async (e) => {
+  e.preventDefault();
+  const fd = new FormData();
+  fd.append("video", fileInput.files[0]);
+  const form = e.target;
+  for (const el of form.elements) {
+    if (!el.name || el.name === "video") continue;
+    fd.append(el.name, el.type === "checkbox" ? el.checked : el.value);
+  }
+  $("go").disabled = true;
+  $("go").textContent = "Uploading…";
+  $("results").innerHTML = "";
+  shown = -1;
+  try {
+    const res = await fetch("/api/jobs", { method: "POST", body: fd });
+    if (!res.ok) throw new Error(await res.text());
+    const { id } = await res.json();
+    $("job").hidden = false;
+    $("jobName").textContent = fileInput.files[0].name;
+    poll(id);
+  } catch (err) {
+    alert("Upload failed: " + err.message);
+  } finally {
+    $("go").textContent = "Edit my video";
+    $("go").disabled = false;
+  }
+};
+
+async function poll(id) {
+  clearTimeout(pollTimer);
+  const job = await (await fetch(`/api/jobs/${id}`)).json();
+  $("jobStatus").textContent = job.status;
+  $("jobStatus").className = "pill " + job.status;
+  $("log").textContent = job.log.join("\n");
+  $("step").textContent = job.step || (job.log.at(-1) || "").replace(/^\[.*?\]\s*/, "");
+  const done = job.outputs.length;
+  $("bar").style.width = (job.status === "done" ? 100 : Math.min(95, 5 + job.progress * 30 + done * 10)) + "%";
+  $("error").hidden = !job.error;
+  $("error").textContent = job.error || "";
+  if (job.outputs.length !== shown) { shown = job.outputs.length; renderResults(job.outputs); }
+  if (job.status === "queued" || job.status === "running") pollTimer = setTimeout(() => poll(id), 2000);
+}
+
+function esc(s) { return String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
+
+function renderResults(outputs) {
+  $("results").innerHTML = outputs.map((o) => o.error ? `
+    <div class="card"><div class="body"><h3>${esc(o.name)}</h3><p class="err">${esc(o.error)}</p></div></div>` : `
+    <div class="card ${o.kind === "long" ? "long" : ""}">
+      <video src="${o.file}" controls preload="metadata"></video>
+      <div class="body">
+        <h3>${esc(o.title || o.name)}</h3>
+        ${o.virality_score != null ? `<div><span class="score">${o.virality_score}</span><span class="meta"> / 100 viral score</span></div>` : ""}
+        ${o.hook_text ? `<div class="meta">Hook: “${esc(o.hook_text)}”</div>` : ""}
+        ${o.reason ? `<div class="meta">${esc(o.reason)}</div>` : ""}
+        ${o.summary ? `<div class="meta">${esc(o.summary)}</div>` : ""}
+        <div class="meta">${o.duration}s · ${o.cuts} cuts${o.music ? " · ♪ " + esc(o.music) : ""}${o.broll?.length ? " · b-roll: " + esc(o.broll.join(", ")) : ""}</div>
+        <div class="links"><a href="${o.file}" download>Download MP4</a><a href="${o.srt}" download>Subtitles (SRT)</a><a href="${o.plan}" download>Edit plan</a></div>
+      </div>
+    </div>`).join("");
+}
+</script>
+</body>
+</html>
