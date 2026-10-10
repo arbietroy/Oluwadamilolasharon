@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+output/
+uploads/
+cache/
+music/*
+!music/README.md
+broll/*
+!broll/README.md

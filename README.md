@@ -34,3 +34,6 @@ In the editor, open the Contact page → Contact form → **Form webhook URL** a
 - `src/sections/` — one file per section type (Hero.jsx is the scroll animation)
 - `src/admin/` — the editor
 - `api/save.js` — the Vercel function behind the Publish button
+
+## Video editor
+`video-editor/` contains **ClipForge**, a separate Python app that turns long videos into viral shorts and a polished full edit. See `video-editor/README.md`. It isn't part of the website build (`.vercelignore` excludes it).
