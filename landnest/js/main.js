@@ -228,6 +228,11 @@
     const tapeRead = document.getElementById("tapeRead");
     const nav = document.getElementById("nav");
     let activeStage = -1;
+    const sites = Array.from(document.querySelectorAll(".site")).map((el) => {
+      const [i0, i1] = el.dataset.in.split(",").map(Number), [o0, o1] = el.dataset.out.split(",").map(Number);
+      return { el, i0, i1, o0, o1 };
+    });
+    const smooth = (x) => x * x * (3 - 2 * x);
 
     function showStage(idx) {
       if (idx === activeStage) return;
@@ -254,6 +259,14 @@
       tapeFill.style.height = `${bp * 100}%`;
       tapeRead.textContent = `WEEK ${String(Math.round(bp * 46)).padStart(2, "0")} OF 46`;
 
+      // "on site" photos wipe in from the right over the model, then wipe out to the left
+      sites.forEach(({ el, i0, i1, o0, o1 }) => {
+        const inP = smooth(range(p, i0, i1)), outP = smooth(range(p, o0, o1));
+        const left = 100 * (1 - inP), right = 100 * outP;
+        el.style.clipPath = `inset(0 ${right}% 0 ${left}%)`;
+        el.style.setProperty("--edge", `${outP > 0 ? 100 - right : left}%`);
+        el.style.visibility = inP > 0 && outP < 1 ? "visible" : "hidden";
+      });
       const r = range(p, BUILD_END, 0.93);
       const eased = r < .5 ? 2 * r * r : 1 - Math.pow(-2 * r + 2, 2) / 2;
       photo.style.clipPath = `circle(${eased * 80}% at 50% 55%)`;
