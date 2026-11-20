@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Landnest Turntable</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Turn a Landnest home around, watch it go up from the plan, and pay as it rises.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- LOADER: five courses of blocks are laid as the frames arrive -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__inner">
+    <div class="wall" id="wall"></div>
+    <div class="loader__row"><span id="loaderText">Laying course 1 of 5</span><span id="loaderPct">0%</span></div>
+  </div>
+</div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Landnest home">
+    <svg viewBox="0 0 36 30" aria-hidden="true"><path d="M2 14 L18 3 L34 14"/><path d="M7 11 V27 H29 V11"/><rect x="14" y="17" width="8" height="10"/></svg>
+    Landnest
+  </a>
+  <nav class="nav__links" aria-label="Main">
+    <a href="#build">The build</a>
+    <a href="#plans">Plans</a>
+    <a href="#pay">Payment</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <a class="btn btn--dark btn--sm" href="#contact">Book a visit</a>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__copy">
+    <p class="eyebrow">The Adaeze · 4-bed bungalow · Palm Crest, Lagos</p>
+    <h1 class="hero__title"><span class="ln"><span>See every side</span></span><span class="ln"><span>before the</span></span><span class="ln"><span>first block.</span></span></h1>
+    <p class="hero__lede">Turn the house, scrub it back to the plan, and see exactly what you're paying for. Every Landnest home is drawn, priced and titled before we break ground.</p>
+    <div class="hero__cta">
+      <a class="btn" href="#plans">Choose a plan</a>
+      <a class="btn btn--line" href="#build">Watch it go up</a>
+    </div>
+    <dl class="hero__facts">
+      <div><dt>From</dt><dd>₦185m</dd></div>
+      <div><dt>Floor area</dt><dd>312 m²</dd></div>
+      <div><dt>Keys in</dt><dd>11 months</dd></div>
+    </dl>
+  </div>
+
+  <div class="stage" id="stage">
+    <div class="stage__word" aria-hidden="true">ADAEZE</div>
+    <div class="plinth" aria-hidden="true">
+      <div class="plinth__disc"></div>
+      <svg class="plinth__ring" id="ring" viewBox="-200 -200 400 400"></svg>
+    </div>
+    <canvas class="stage__canvas" id="houseCanvas" role="img" aria-label="Cut-out model of the Adaeze bungalow. Drag to turn it."></canvas>
+    <div class="tags" id="tags">
+      <span class="tag" data-from="-50" data-to="45" style="--x:30%;--y:60%">Brick &amp; stone porch</span>
+      <span class="tag" data-from="55" data-to="140" style="--x:68%;--y:30%">Stone-coated steel roof</span>
+      <span class="tag" data-from="150" data-to="225" style="--x:64%;--y:58%">Aluminium casements</span>
+      <span class="tag" data-from="235" data-to="295" style="--x:32%;--y:34%">Seamless gutters</span>
+    </div>
+    <div class="hud">
+      <div class="hud__deg"><span id="deg">000°</span><small id="facing">Facing north-east</small></div>
+      <div class="hud__ctl">
+        <button class="ic" id="playBtn" type="button" aria-label="Pause rotation" aria-pressed="true">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><rect class="i-pause" x="5" y="4" width="3.2" height="12" rx="1"/><rect class="i-pause" x="11.8" y="4" width="3.2" height="12" rx="1"/><path class="i-play" d="M6 4 L16 10 L6 16 Z"/></svg>
+        </button>
+        <span class="hint"><svg viewBox="0 0 24 12" aria-hidden="true"><path d="M1 6 H23 M5 2 L1 6 L5 10 M19 2 L23 6 L19 10"/></svg>Drag to turn</span>
+      </div>
+    </div>
+    <div class="scrub">
+      <div class="scrub__steps" id="steps">
+        <button type="button" data-f="12">Plan</button>
+        <button type="button" data-f="38">Slab</button>
+        <button type="button" data-f="64">Walls</button>
+        <button type="button" data-f="90">Openings</button>
+        <button type="button" data-f="108">Roof</button>
+        <button type="button" data-f="118">Keys</button>
+      </div>
+      <label class="sr" for="buildRange">Build stage</label>
+      <input type="range" id="buildRange" min="0" max="1000" value="1000">
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip" aria-hidden="true">
+  <div class="strip__track">
+    <span>Titled land</span><i></i><span>Approved drawings</span><i></i><span>Licensed crews</span><i></i><span>Weekly site photos</span><i></i><span>12-month warranty</span><i></i>
+    <span>Titled land</span><i></i><span>Approved drawings</span><i></i><span>Licensed crews</span><i></i><span>Weekly site photos</span><i></i><span>12-month warranty</span><i></i>
+  </div>
+</div>
+
+<!-- BUILD: pinned scroll scrub -->
+<section class="build" id="build">
+  <div class="build__pin">
+    <div class="build__grid" aria-hidden="true"></div>
+    <div class="build__head">
+      <p class="eyebrow">The build</p>
+      <h2 class="h2">Five stages,<br>forty-six weeks.</h2>
+    </div>
+    <canvas class="build__canvas" id="buildCanvas" aria-hidden="true"></canvas>
+    <ol class="build__list" id="buildList">
+      <li><span class="n">01</span><div><h3>Setting out</h3><p>Pegs, profiles and string lines placed by a registered surveyor.</p><small>Weeks 0–2</small></div></li>
+      <li><span class="n">02</span><div><h3>Foundation &amp; slab</h3><p>Strip footings, damp-proof course and a 150 mm reinforced slab.</p><small>Weeks 2–6</small></div></li>
+      <li><span class="n">03</span><div><h3>Blockwork</h3><p>Nine-inch sandcrete blocks up to lintel, checked daily for plumb.</p><small>Weeks 7–16</small></div></li>
+      <li><span class="n">04</span><div><h3>Openings &amp; roof</h3><p>Doors, windows, trusses and stone-coated steel roofing.</p><small>Weeks 17–30</small></div></li>
+      <li><span class="n">05</span><div><h3>Finishes &amp; keys</h3><p>Render, cladding, tiling, kitchen, landscaping and your C of O.</p><small>Weeks 31–46</small></div></li>
+    </ol>
+    <div class="build__meter"><span id="buildWeek">Week 00</span><i><b id="buildBar"></b></i><span>Week 46</span></div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="plans wrap" id="plans">
+  <div class="sec-head">
+    <p class="eyebrow">Plans</p>
+    <h2 class="h2">Three plans, built<br>on titled plots.</h2>
+    <p class="sec-head__p">Prices include the plot, the Certificate of Occupancy, building approval and the full build. Finishes are fixed in the contract.</p>
+  </div>
+  <div class="cards">
+    <article class="card" data-tilt>
+      <div class="card__img"><img src="assets/img/home-1.jpg" alt="The Adaeze, a four-bedroom bungalow with a stone porch" loading="lazy"></div>
+      <div class="card__body">
+        <div class="card__top"><h3>The Adaeze</h3><span class="badge">Most chosen</span></div>
+        <p class="card__loc">Palm Crest, Ibeju-Lekki</p>
+        <ul class="card__specs"><li><b>4</b> bed</li><li><b>5</b> bath</li><li><b>312</b> m²</li></ul>
+        <p class="card__price">₦185,000,000</p>
+      </div>
+    </article>
+    <article class="card" data-tilt>
+      <div class="card__img"><img src="assets/img/home-2.jpg" alt="The Kemi, a three-bedroom bungalow with white columns" loading="lazy"></div>
+      <div class="card__body">
+        <div class="card__top"><h3>The Kemi</h3></div>
+        <p class="card__loc">Orchid Gardens, Lekki</p>
+        <ul class="card__specs"><li><b>3</b> bed</li><li><b>4</b> bath</li><li><b>248</b> m²</li></ul>
+        <p class="card__price">₦145,000,000</p>
+      </div>
+    </article>
+    <article class="card" data-tilt>
+      <div class="card__img"><img src="assets/img/home-3.jpg" alt="The Obi, a four-bedroom bungalow with marble pillars" loading="lazy"></div>
+      <div class="card__body">
+        <div class="card__top"><h3>The Obi</h3><span class="badge badge--alt">With BQ</span></div>
+        <p class="card__loc">Guzape Ridge, Abuja</p>
+        <ul class="card__specs"><li><b>4</b> bed</li><li><b>5</b> bath</li><li><b>340</b> m²</li></ul>
+        <p class="card__price">₦220,000,000</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- PAY AS IT RISES -->
+<section class="pay" id="pay">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Payment</p>
+      <h2 class="h2">Pay as it rises.</h2>
+      <p class="sec-head__p">You never pay ahead of the work. Each instalment is due only when that stage is signed off by your engineer, with photos.</p>
+    </div>
+    <ol class="milestones">
+      <li style="--w:30"><img src="assets/cut/c020.webp" alt="" loading="lazy"><b>30%</b><span>Deposit &amp; title</span></li>
+      <li style="--w:20"><img src="assets/cut/c040.webp" alt="" loading="lazy"><b>20%</b><span>Slab complete</span></li>
+      <li style="--w:20"><img src="assets/cut/c066.webp" alt="" loading="lazy"><b>20%</b><span>Walls to lintel</span></li>
+      <li style="--w:20"><img src="assets/cut/c112.webp" alt="" loading="lazy"><b>20%</b><span>Roof on</span></li>
+      <li style="--w:10"><img src="assets/cut/c130.webp" alt="" loading="lazy"><b>10%</b><span>Keys</span></li>
+    </ol>
+    <div class="calc">
+      <label for="calcPlan">Plan</label>
+      <select id="calcPlan">
+        <option value="185000000">The Adaeze · ₦185m</option>
+        <option value="145000000">The Kemi · ₦145m</option>
+        <option value="220000000">The Obi · ₦220m</option>
+      </select>
+      <div class="calc__out" id="calcOut" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote wrap">
+  <blockquote>“I turned the model around on my phone for a week before I paid. The house I got the keys to looked exactly like it, down to the brick on the porch.”</blockquote>
+  <p class="quote__by"><b>Tunde A.</b> · The Adaeze, Palm Crest · keys March 2026</p>
+</section>
+
+<!-- FAQ -->
+<section class="faq wrap" id="faq">
+  <div class="sec-head"><p class="eyebrow">Questions</p><h2 class="h2">Before you visit</h2></div>
+  <div class="faq__list">
+    <details><summary>Is the land already titled?</summary><p>Yes. Every plot has a Certificate of Occupancy before it goes on sale. We show you the survey plan and the Lands Registry search at your site visit.</p></details>
+    <details><summary>Can I change the layout?</summary><p>Room sizes and finishes can change before the slab is poured. Our architect redraws the plan and the price is fixed again in writing.</p></details>
+    <details><summary>What if I live abroad?</summary><p>Most of our buyers do. You get a site report with photos every Friday and a video call at each payment stage.</p></details>
+    <details><summary>What does the warranty cover?</summary><p>Twelve months on everything we build, and ten years on the structure. The roof carries the manufacturer's thirty-year warranty.</p></details>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap contact__grid">
+    <div>
+      <p class="eyebrow eyebrow--light">Visit</p>
+      <h2 class="h2">Stand on the plot.<br>Then decide.</h2>
+      <p class="contact__p">Site visits run Monday to Saturday. An engineer walks you round the estate, the show home and the title documents.</p>
+      <dl class="contact__dl">
+        <div><dt>Phone</dt><dd>+234 801 234 5678</dd></div>
+        <div><dt>Email</dt><dd>hello@landnest.ng</dd></div>
+        <div><dt>Lagos</dt><dd>14 Admiralty Way, Lekki Phase 1</dd></div>
+        <div><dt>Abuja</dt><dd>7 Kumasi Crescent, Wuse 2</dd></div>
+      </dl>
+    </div>
+    <form class="form" id="form" novalidate>
+      <div class="f"><label for="fName">Full name</label><input id="fName" name="name" autocomplete="name" required></div>
+      <div class="f2">
+        <div class="f"><label for="fEmail">Email</label><input id="fEmail" name="email" type="email" autocomplete="email" required></div>
+        <div class="f"><label for="fPhone">WhatsApp</label><input id="fPhone" name="phone" type="tel" autocomplete="tel"></div>
+      </div>
+      <div class="f"><label for="fPlan">Plan</label><select id="fPlan" name="plan"><option>The Adaeze</option><option>The Kemi</option><option>The Obi</option><option>Not sure yet</option></select></div>
+      <div class="f"><label for="fDate">Preferred visit date</label><input id="fDate" name="date" type="date"></div>
+      <button class="btn btn--full" type="submit">Request a site visit</button>
+      <p class="form__msg" id="formMsg" role="status"></p>
+    </form>
+  </div>
+  <footer class="foot wrap">
+    <span>© 2026 Landnest Homes Ltd.</span><span>Lagos · Abuja</span><a href="#top">Back to top</a>
+  </footer>
+</section>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
